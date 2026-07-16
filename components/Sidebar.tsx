@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Home, Package, Clock, Settings, Menu } from "lucide-react";
 
 export default function Sidebar() {
@@ -79,17 +80,20 @@ function SidebarItem({ collapsed, icon, label, href }: SidebarItemProps) {
   const router = useRouter();
 
   return (
-    <div
-      onClick={() => router.push(href)}
+
+    <Link
+      href={href}
+      prefetch
       className={`
-        flex items-center gap-3 text-zinc-400 hover:text-white cursor-pointer
-        transition-all duration-300 py-2 rounded-lg hover:bg-zinc-800
-        ${collapsed ? "justify-center w-full" : ""}
-      `}
+    flex items-center gap-3 rounded-lg py-2
+    text-zinc-400 hover:bg-zinc-800 hover:text-white
+    transition-all duration-300
+    ${collapsed ? "w-full justify-center" : ""}
+  `}
     >
       {icon}
       {!collapsed && <span>{label}</span>}
-    </div>
+    </Link>
   );
 }
 

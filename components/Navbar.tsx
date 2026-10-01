@@ -2,7 +2,7 @@ export default function Navbar() {
     return (
         <header className="w-full bg-white dark:bg-zinc-900 shadow p-4 flex justify-between items-center transition-colors duration-300">
             <h1 className="text-lg font-medium text-gray-900 dark:text-white">
-                Welcome, Ruwaidah
+                Welcome, Alex
             </h1>
 
             <div className="flex items-center gap-4">

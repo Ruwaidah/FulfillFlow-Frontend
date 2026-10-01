@@ -46,10 +46,21 @@ export default function DashboardPage() {
         selectedDates.length === 0
             ? orders
             : orders.filter((order) => {
-                const orderDate = formatLocalDate(new Date(order.createdAt));
-
                 const selectedDateStrings = selectedDates.map((date) =>
                     date.format("YYYY-MM-DD")
+                );
+
+                const fulfillmentDate =
+                    order.orderType === "shipping"
+                        ? order.shipBy
+                        : order.scheduledFor;
+
+                if (!fulfillmentDate) {
+                    return false;
+                }
+
+                const orderDate = formatLocalDate(
+                    new Date(fulfillmentDate)
                 );
 
                 return selectedDateStrings.includes(orderDate);
@@ -57,8 +68,19 @@ export default function DashboardPage() {
 
     if (loading) {
         return (
-            <div className="p-6 text-zinc-300">
-                Loading dashboard...
+            <div className="min-h-[80vh] flex items-center justify-center">
+                <div className="flex flex-col items-center">
+                    <div
+                        className="w-12 h-12 border-4 border-zinc-800 border-t-blue-500 rounded-full animate-spin" />
+
+                    <h2 className="text-white text-lg font-medium mt-5">
+                        Loading FulfillFlow
+                    </h2>
+
+                    <p className="text-zinc-500 text-sm mt-2">
+                        Preparing your dashboard...
+                    </p>
+                </div>
             </div>
         );
     }

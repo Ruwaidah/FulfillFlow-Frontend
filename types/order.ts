@@ -62,8 +62,8 @@ export type Activity = {
 
 export type ActivityWithOrder = Activity & {
     orderId: string;
-    orderStatus: Order["status"];
-    orderType: Order["orderType"];
+    orderStatus: OrderStatus;
+    orderType: OrderType;
     customerName: string;
 };
 
@@ -77,6 +77,9 @@ export type Order = {
 
     createdAt: string;
     updatedAt: string;
+
+    scheduledFor: string | null;
+    shipBy: string | null;
 
     pickAssignments?: PickAssignment[];
 

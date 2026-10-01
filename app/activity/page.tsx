@@ -13,8 +13,8 @@ export default function ActivityPage() {
 
 
     useEffect(() => {
-        api("/api/orders")
-            .then((data: Order[]) => {
+        api<Order[]>("/api/orders")
+            .then((data) => {
                 setOrders(data);
             })
             .catch((error) => {

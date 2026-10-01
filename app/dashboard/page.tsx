@@ -29,7 +29,7 @@ export default function DashboardPage() {
     ]);
 
     useEffect(() => {
-        api("/api/orders")
+        api<Order[]>("/api/orders")
             .then((data) => {
                 setOrders(data);
             })

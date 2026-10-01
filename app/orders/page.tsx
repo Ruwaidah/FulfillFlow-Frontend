@@ -32,7 +32,7 @@ export default function OrdersPage() {
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        api("/api/orders")
+        api<Order[]>("/api/orders")
             .then((data: Order[]) => {
                 console.log(
                     "FRONTEND ORDERS:",

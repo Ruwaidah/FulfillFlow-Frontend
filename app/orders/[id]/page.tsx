@@ -22,7 +22,7 @@ export default function OrderDetail({
     const [error, setError] = useState("");
 
     useEffect(() => {
-        api(`/api/orders/${id}`)
+        api<Order>(`/api/orders/${id}`)
             .then(setOrder)
             .catch((error) => {
                 console.error("Failed to load order:", error);
